@@ -1,0 +1,46 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User page</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+<h1>User details</h1>
+<div class = "main_container">
+    <div class="row">
+        <div class="left">Tower ID:</div>
+        <div class="left" th:text="${tower.tower_id}"></div>
+    </div>
+
+    <div class="row">
+        <div class="left">Operator: </div>
+        <div class="left" th:text="${tower.operator}"></div>
+    </div>
+
+    <div class="row">
+        <div class="left">Technology: </div>
+        <div class="left" th:text="${tower.technology}"></div>
+    </div>
+
+    <div class="row">
+        <div class="left">Address: </div>
+        <div class="left"
+             th:text="${tower.address}">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="left">Height: </div>
+        <div class="left" th:text="${tower.height}"></div>
+    </div>
+
+    <div class="row">
+        <div class="left">Latitude: </div>
+        <div class="left" th:text="${tower.latitude}"></div>
+    </div>
+    <div class="row">
+        <div class="left">Longitude: </div>
+        <div class="left" th:text="${tower.longitude}"></div>
+    </div>
+</div>
+</body>
+</html>
