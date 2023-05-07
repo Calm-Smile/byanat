@@ -1,11 +1,12 @@
 package com.example.ByanPrjt;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
+@JsonFormat(shape=JsonFormat.Shape.OBJECT)
 public class Tower {
     private String tower_id;
     private String operator;
@@ -81,7 +82,7 @@ public class Tower {
     }
 
     public Tower() {
-        List<ArrayT> arr= new ArrayList<>();
+
     }
 
     @Override
