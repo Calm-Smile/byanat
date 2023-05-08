@@ -1,12 +1,15 @@
 package com.example.ByanPrjt;
 
 import org.springframework.cglib.core.CollectionUtils;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.lang.reflect.Array;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -14,9 +17,9 @@ import java.util.stream.Stream;
 
 @Controller
 public class TowerCtrl {
-    @RequestMapping("/tower")
+    @RequestMapping("/challenge/tower")
     @ResponseBody
-    private Tower[] getTower() {
+    private String getTower() {
         String uri = "https://byanat.wiremockapi.cloud/api/v3/towers";
         RestTemplate restTemplate = new RestTemplate();
         Tower[] tower;
@@ -37,13 +40,15 @@ public class TowerCtrl {
 //        }
 
         //display result in browser: http://localhost:8080/challenge/tower
-        return tower;
+        String nto=Arrays.toString(tower).replace("[", "<br><h2>List of all towers:</h2>")
+                .replace("]", "<br><h3>&nbsp;End of list</h3>");;
+        return nto;
     }
 
     // Searching function
     @ResponseBody
     @GetMapping("/challenge/towers")
-    public Tower[] filtering(@RequestParam(required = false) String operator, @RequestParam(required = false) String tech, @RequestParam(required = false) String type) {
+    public String filtering(@RequestParam(required = false) String operator, @RequestParam(required = false) String tech, @RequestParam(required = false) String type) {
         String uri = "https://byanat.wiremockapi.cloud/api/v3/towers";
         RestTemplate restTemplate = new RestTemplate();
         //convert stream to array of type Tower to get tower objects
@@ -69,16 +74,50 @@ public class TowerCtrl {
                     .toArray(Tower[]::new);
             //if no search results
             if (ntower.length < 1) {
-                System.out.println("No Search results.. try http://localhost:8080/challenge/towers?operator=Verizon&tech=4G&type=TOWER");
-                return tower;
-            }
+                return ("""
+                        <p>&nbsp;</p>
+                        <h2>&nbsp;No Search result found..</h2>
+                        <h3>&nbsp;Try</h3>
+                        <a href='http://localhost:8080/challenge/towers?operator=Verizon&amp;tech=4G&amp;type=TOWER'>http://localhost:8080/challenge/towers?operator=Verizon&amp;tech=4G&amp;type=TOWER</a>""");
+//                return Arrays.toString(tower);
+            } else
+                return Arrays.toString(ntower).replace("[", "<br><h2>We've found "+ ntower.length +" towers for you:</h2>")
+                        .replace("]", "<br><h3>&nbsp;End of search results</h3>");
         } else {
             //if not searching then just display all
-            System.out.println("Not getting any search parameters.. to search try http://localhost:8080/challenge/towers?operator=Verizon&tech=4G&type=TOWER");
-            return tower;
+            return ("""
+                    <html>
+                    <body>
+                    <h3>Not getting any search parameters or you've used wrong parameters!</h3>
+                    <table  style="text-align: center; border-left:1px solid black; border-right:1px solid black;" border=1 frame=hsides rules=rows>
+                    <tbody>
+                    <tr>
+                    <td><strong>&nbsp;Parameter&nbsp;</strong></td>
+                    <td style="text-align: center; border-left:1px solid black;"><strong>Usage</strong></td>
+                    <td style="text-align: center; border-left:1px solid black;"><strong>Example</strong></td>
+                    </tr>
+                    <tr>
+                    <td>operator</td>
+                    <td style="text-align: center; border-left:1px solid black;">For finding network operators of towers</td>
+                    <td style="text-align: center; border-left:1px solid black;">Verzion, AT&amp;T</td>
+                    </tr>
+                    <tr>
+                    <td>tech</td>
+                    <td style="text-align: center; border-left:1px solid black;">&nbsp;For finding the technology used in towers&nbsp;</td>
+                    <td style="text-align: center; border-left:1px solid black;">3G, 4G, 5G</td>
+                    </tr>
+                    <tr>
+                    <td>type</td>
+                    <td style="text-align: center; border-left:1px solid black;">For finding the type of towers</td>
+                    <td style="text-align: center; border-left:1px solid black;">&nbsp;TOWER, GTOWER&nbsp;</td>
+                    </tr>
+                    </tbody>
+                    </table>
+                    <div>&nbsp;</div>
+                    <div>For example, try:</div>
+                    <a href='http://localhost:8080/challenge/towers?operator=Verizon&amp;tech=4G&amp;type=TOWER'>http://localhost:8080/challenge/towers?operator=Verizon&amp;tech=4G&amp;type=TOWER</a>
+                        </body>\s
+                          </html>""");
         }
-
-        return ntower;
     }
-
 }

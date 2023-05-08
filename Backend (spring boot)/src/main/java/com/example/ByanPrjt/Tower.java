@@ -87,16 +87,16 @@ public class Tower {
 
     @Override
     public String toString() {
-        return "Tower{" +
-                ", tower_id='" + tower_id + '\'' +
-                ", operator='" + operator + '\'' +
-                ", address='" + address + '\'' +
-                ", height='" + height + '\'' +
-                ", tower_type='" + tower_type + '\'' +
-                ", latitude='" + latitude + '\'' +
-                ", longitude='" + longitude + '\'' +
-                ", technology='" + technology + '\'' +
-                '}';
+        return  "<ul>" +
+                "<li><strong>Tower ID&nbsp;=&nbsp;</strong>" + tower_id + "</li>" +
+                "<li><strong>Network Operator&nbsp;=&nbsp;</strong>" + operator + "</li>" +
+                "<li><strong>Address&nbsp;=&nbsp;</strong>" + address + "</li>" +
+                "<li><strong>Tower Height (m)&nbsp;=&nbsp;</strong>" + height + "</li>" +
+                "<li><strong>Tower Type&nbsp;=&nbsp;</strong>" + tower_type + "</li>" +
+                "<li><strong>Latitude&nbsp;=&nbsp;</strong>" + latitude + "</li>" +
+                "<li><strong>Longitude&nbsp;=&nbsp;</strong>" + longitude + "</li>" +
+                "<li><strong>Technology&nbsp;=&nbsp;</strong>" + technology + "</li>" +
+                "</ul>";
     }
 
     public Tower(String tower_id, String operator, String address, String height, String tower_type, String latitude, String longitude, String technology) {
