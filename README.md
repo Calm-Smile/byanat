@@ -38,7 +38,9 @@ Spring boot requirements:
 ==================
 
 Angular's project aproach:
+![Drawing1 - Copy](https://github.com/Calm-Smile/byanat/assets/41920875/8dacbf0f-b7d3-4279-8798-50b5a03e17f3)
 
 
 Spring Boot's project aproach:
+![Drawing1](https://github.com/Calm-Smile/byanat/assets/41920875/6466397c-b995-4a6d-86d1-ebaeb81cafc4)
 
