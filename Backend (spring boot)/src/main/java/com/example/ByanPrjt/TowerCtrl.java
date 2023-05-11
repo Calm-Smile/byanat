@@ -27,22 +27,32 @@ public class TowerCtrl {
 //        ArrayT tower = restTemplate.getForObject(uri, ArrayT.class);
         tower = restTemplate.getForObject(uri, Tower[].class);
 
-//        for (int i = 0; i < tower.length - 1; i++) {
-//            System.out.println("Tower Id: " + tower[i].getTower_id());
-//            System.out.println("Operator: " + tower[i].getOperator());
-//            System.out.println("Technology: " + tower[i].getTechnology());
-//            System.out.println("Tower Type: " + tower[i].getTechnology());
-//            System.out.println("Height: " + tower[i].getTechnology());
-//            System.out.println("Latitude: " + tower[i].getLatitude());
-//            System.out.println("Longitude: " + tower[i].getLongitude());
-//            System.out.println("Address: " + tower[i].getAddress());
-//            System.out.println("\n");
-//        }
-
         //display result in browser: http://localhost:8080/challenge/tower
-        String nto=Arrays.toString(tower).replace("[", "<br><h2>List of all towers:</h2>")
-                .replace("]", "<br><h3>&nbsp;End of list</h3>");;
-        return nto;
+        String nto=Arrays.toString(tower);
+        return "<br><div style='position: absolute;text-align:center;\n" +
+                "  top: 50%;\n" +
+                "  left: 50%;\n" +
+                "  width: 100%;\n" +
+                "  max-height: calc(100vh - 1px);\n" +
+                "    overflow: auto;\n" +
+                "    border-radius: 2px;\n" +
+                "    max-width: 100%;\n" +
+                "  -webkit-transform: translate(-50%, -50%);\n" +
+                "          transform: translate(-50%, -50%);'><h2>List of all towers&nbsp;(" + tower.length +" towers):</h2><table  style=\"text-align: center; margin: 0 auto; border-left:1px solid black; border-right:1px solid black;\" border=1 frame=hsides rules=rows>\n" +
+                "<tbody>\n" +
+                "<tr>\n" +
+                "<td><strong>&nbsp;ID&nbsp;</strong></td>\n" +
+                "<td style=\"text-align: center; border-left:1px solid black;\"><strong>&nbsp;Operator&nbsp;</strong></td>\n" +
+                "<td style=\"text-align: center; border-left:1px solid black;\"><strong>&nbsp;Address&nbsp;</strong></td>\n" +
+                "<td style=\"text-align: center; border-left:1px solid black;\"><strong>&nbsp;Height (m)&nbsp;</strong></td>\n" +
+                "<td style=\"text-align: center; border-left:1px solid black;\"><strong>&nbsp;Type&nbsp;</strong></td>\n" +
+                "<td style=\"text-align: center; border-left:1px solid black;\"><strong>&nbsp;Latitude&nbsp;</strong></td>\n" +
+                "<td style=\"text-align: center; border-left:1px solid black;\"><strong>&nbsp;Longitude&nbsp;</strong></td>\n" +
+                "<td style=\"text-align: center; border-left:1px solid black;\"><strong>&nbsp;Technology&nbsp;</strong></td>\n" +
+                "</tr>" +
+                "<tr>"+nto.replace("[", "")
+                .replace(",", "\n")
+                .replace("]", "</tbody></table><br><h3>&nbsp;End of table</h3></div>");
     }
 
     // Searching function
@@ -81,13 +91,45 @@ public class TowerCtrl {
                         <a href='http://localhost:8080/challenge/towers?operator=Verizon&amp;tech=4G&amp;type=TOWER'>http://localhost:8080/challenge/towers?operator=Verizon&amp;tech=4G&amp;type=TOWER</a>""");
 //                return Arrays.toString(tower);
             } else
-                return Arrays.toString(ntower).replace("[", "<br><h2>We've found "+ ntower.length +" towers for you:</h2>")
-                        .replace("]", "<br><h3>&nbsp;End of search results</h3>");
+                return "<br><div style='position: absolute;text-align:center;\n" +
+                        "  top: 50%;\n" +
+                        "  left: 50%;\n" +
+                        "  width: 100%;\n" +
+                        "  max-height: calc(100vh - 1px);\n" +
+                        "    overflow: auto;\n" +
+                        "    border-radius: 7px;\n" +
+                        "    max-width: 100%;\n" +
+                        "  -webkit-transform: translate(-50%, -50%);\n" +
+                        "          transform: translate(-50%, -50%);'><h2>We've found&nbsp;" + ntower.length +" towers for you:</h2><table  style=\"text-align: center; margin: 0 auto; border-left:1px solid black; border-right:1px solid black;\" border=1 frame=hsides rules=rows>\n" +
+                        "<tbody>\n" +
+                        "<tr>\n" +
+                        "<td><strong>&nbsp;ID&nbsp;</strong></td>\n" +
+                        "<td style=\"text-align: center; border-left:1px solid black;\"><strong>&nbsp;Operator&nbsp;</strong></td>\n" +
+                        "<td style=\"text-align: center; border-left:1px solid black;\"><strong>&nbsp;Address&nbsp;</strong></td>\n" +
+                        "<td style=\"text-align: center; border-left:1px solid black;\"><strong>&nbsp;Height (m)&nbsp;</strong></td>\n" +
+                        "<td style=\"text-align: center; border-left:1px solid black;\"><strong>&nbsp;Type&nbsp;</strong></td>\n" +
+                        "<td style=\"text-align: center; border-left:1px solid black;\"><strong>&nbsp;Latitude&nbsp;</strong></td>\n" +
+                        "<td style=\"text-align: center; border-left:1px solid black;\"><strong>&nbsp;Longitude&nbsp;</strong></td>\n" +
+                        "<td style=\"text-align: center; border-left:1px solid black;\"><strong>&nbsp;Technology&nbsp;</strong></td>\n" +
+                        "</tr>" +
+                        "<tr>"+Arrays.toString(ntower).replace("[", "")
+                        .replace(",", "")
+                        .replace("]", "</tbody></table><br><h3>&nbsp;End of search results</h3></div>");
         } else {
             //if not searching then just display all
             return ("""
                     <html>
                     <body>
+                    <div style="position: absolute;
+                                  top: 50%;
+                                  left: 50%;
+                                  width: 90%;
+                                  max-height: calc(100vh - 155px);
+                                    overflow: auto;
+                                    border-radius: 7px;
+                                    max-width: 100%;
+                                  -webkit-transform: translate(-50%, -50%);
+                                          transform: translate(-50%, -50%);">
                     <h3>Not getting any search parameters or you've used wrong parameters!</h3>
                     <table  style="text-align: center; border-left:1px solid black; border-right:1px solid black;" border=1 frame=hsides rules=rows>
                     <tbody>
@@ -116,7 +158,7 @@ public class TowerCtrl {
                     <div>&nbsp;</div>
                     <div>For example, try:</div>
                     <a href='http://localhost:8080/challenge/towers?operator=Verizon&amp;tech=4G&amp;type=TOWER'>http://localhost:8080/challenge/towers?operator=Verizon&amp;tech=4G&amp;type=TOWER</a>
-                        </body>\s
+                        </div></body>\s
                           </html>""");
         }
     }

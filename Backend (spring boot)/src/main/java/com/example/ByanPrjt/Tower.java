@@ -85,18 +85,18 @@ public class Tower {
 
     }
 
+
     @Override
     public String toString() {
-        return  "<ul>" +
-                "<li><strong>Tower ID&nbsp;=&nbsp;</strong>" + tower_id + "</li>" +
-                "<li><strong>Network Operator&nbsp;=&nbsp;</strong>" + operator + "</li>" +
-                "<li><strong>Address&nbsp;=&nbsp;</strong>" + address + "</li>" +
-                "<li><strong>Tower Height (m)&nbsp;=&nbsp;</strong>" + height + "</li>" +
-                "<li><strong>Tower Type&nbsp;=&nbsp;</strong>" + tower_type + "</li>" +
-                "<li><strong>Latitude&nbsp;=&nbsp;</strong>" + latitude + "</li>" +
-                "<li><strong>Longitude&nbsp;=&nbsp;</strong>" + longitude + "</li>" +
-                "<li><strong>Technology&nbsp;=&nbsp;</strong>" + technology + "</li>" +
-                "</ul>";
+        return "<tr><td>&nbsp;" + tower_id + "&nbsp;</td>\n" +
+                "<td style=\"text-align: center; border-left:1px solid black;\">" + operator + "</td>" +
+                "<td style=\"text-align: center; border-left:1px solid black;\">&nbsp;" + address + "&nbsp;</td>" +
+                "<td style=\"text-align: center; border-left:1px solid black;\">" + height + "</td>" +
+                "<td style=\"text-align: center; border-left:1px solid black;\">&nbsp;" + tower_type + "&nbsp;</td>" +
+                "<td style=\"text-align: center; border-left:1px solid black;\">&nbsp;" + latitude + "&nbsp;</td>" +
+                "<td style=\"text-align: center; border-left:1px solid black;\">&nbsp;" + longitude + "&nbsp;</td>" +
+                "<td style=\"text-align: center; border-left:1px solid black;\">" + technology + "</td>" +
+                "</tr>";
     }
 
     public Tower(String tower_id, String operator, String address, String height, String tower_type, String latitude, String longitude, String technology) {
