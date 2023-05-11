@@ -1,0 +1,20 @@
+<html>
+<header>
+    <title>Byanat's Towers Data</title>
+</header>
+
+<body>
+    <H2>Towers data:</H2>
+    <button (click)="toggle()" id="bt" class="button">
+        {{buttonName}}
+    </button>
+
+    <ng-container *ngIf="show">
+        <div><app-home id="home"></app-home></div>
+    </ng-container>
+    <ng-container *ngIf="show1">
+        <div><app-mychart id="chart"></app-mychart></div>
+    </ng-container>
+</body>
+
+</html>
