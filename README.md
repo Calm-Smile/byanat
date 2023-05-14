@@ -50,5 +50,6 @@ Spring Boot's project aproach:
 Updates:
 - Table view
 - Responsive pages
+- Added sticky header & footer for angular table
 - Enhanced performance
 - minor bugs
