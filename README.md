@@ -38,9 +38,17 @@ Spring boot requirements:
 ==================
 
 Angular's project aproach:
-![Drawing1 - Copy](https://github.com/Calm-Smile/byanat/assets/41920875/8dacbf0f-b7d3-4279-8798-50b5a03e17f3)
+![Drawing1 - Copy](https://github.com/Calm-Smile/byanat/assets/41920875/b357df6e-9a76-4ea0-8bf8-81ecc42f3eda)
+
 
 
 Spring Boot's project aproach:
-![Drawing1](https://github.com/Calm-Smile/byanat/assets/41920875/6466397c-b995-4a6d-86d1-ebaeb81cafc4)
+![Drawing1](https://github.com/Calm-Smile/byanat/assets/41920875/5a76ad08-6137-4d21-a307-9c8ebf5ee841)
 
+==================
+
+Updates:
+- Table view
+- Responsive pages
+- Enhanced performance
+- minor bugs
